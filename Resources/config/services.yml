@@ -1,0 +1,30 @@
+services:
+        flexix_model.model:
+            class: Flexix\ModelBundle\Util\Model
+            arguments: ['@doctrine.orm.entity_manager']          
+            
+        flexix_model.paginator:    
+            class: Flexix\ModelBundle\Util\Paginator
+            arguments: ['@knp_paginator',20 ]    
+       
+        flexix_model.filter:
+            class: Flexix\ModelBundle\Util\Filter
+            arguments: ['@lexik_form_filter.query_builder_updater']
+            
+        flexix_model.paginator_adapter:
+            class: Flexix\ModelBundle\Util\PaginatorAdapter
+        
+        flexix_model.typeahead_adapter:
+            class: Flexix\ModelBundle\Util\TypeaheadAdapter    
+            
+        flexix_model.paginator_model:
+            class: Flexix\ModelBundle\Util\PaginatorModel
+            arguments: ['@flexix_model.model','@flexix_model.filter','@flexix_model.paginator' ]    
+#  Samp            
+#        flexix_model.typeahead:
+#            class: Flexix\ModelBundle\Model\Typeahead
+#            arguments: ['@flexix_model.model','@flexix_model.filter',10,{ 'name': 'p.name' }]  
+
+
+
+
