@@ -54,13 +54,23 @@ class Model implements ModelInterface {
         return $entity;
     }
 
-    public function saveEntitites($arrayCollection) {
+    
+   public function saveEntitites($arrayCollection) {
 
+           $this->saveEntities($arrayCollection);
+    }
+    
+    public function saveEntities($arrayCollection)
+    {
+        
         foreach ($arrayCollection as $entity) {
             $this->entityManager->persist($entity);
         }
         $this->flush();
-    }
+        
+        
+    }        
+    
 
     public function update() {
         $this->flush();
